@@ -21,6 +21,7 @@ with open('secrets.json') as f:
     data = json.load(f)
 
 os.environ["OPENAI_API_KEY"] = data['api_key']
+os.environ["GITHUB_API_KEY"] = data['githubtoken']
 
 st.session_state['GPT'] = ChatOpenAI(temperature=0.7, model=model_name, )
 
@@ -36,4 +37,3 @@ if __name__ == '__main__':
         homepage()
     else:
         main()
-
