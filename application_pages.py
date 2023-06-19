@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from important_variables import logo_image
 from langchain import PromptTemplate, LLMChain
 
@@ -11,6 +12,8 @@ def main():
     username = st.text_input("Input Git Use Id:")
     if username != '':
         result = get_github_repos(username, git_api)
+        # st.write(result)
+        # st.write(os.environ)
         try:
             repo_links = [git_repo['html_url'] for git_repo in result]
             # st.write(repo_links)
@@ -107,5 +110,4 @@ def homepage():
         print('going to the application!!')
         home_image.empty()
         main()
-
 
