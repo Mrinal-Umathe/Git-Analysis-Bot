@@ -46,9 +46,14 @@ def tokenize_and_chunk(content, max_tokens=1000):
 
 
 def get_github_repos(user_url, git_api):
+    with open('secrets.json') as f:
+        data = json.load(f)
+    github_key = os.environ["GITHUB_API_KEY"]
+    
     username = user_url.split('/')[-1]
     git_api = git_api.replace('username', username)
-    response = requests.get(git_api)
+    headers = {"Authorization": "token " + github_key}
+    response = requests.get(git_api, headers = headers)
     repos = response.json()
     return repos
 
