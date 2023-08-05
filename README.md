@@ -1,1 +1,1 @@
-# Git-Analysis-Bot
+# GitHub-Automated-Analysis
